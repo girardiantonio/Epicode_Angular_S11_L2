@@ -1,0 +1,93 @@
+<form
+  class="w-50 mx-auto p-3"
+  [formGroup]="form"
+  (ngSubmit)="register()"
+  novalidate
+>
+  <div class="mb-3">
+    <label for="name" class="form-label">First name</label>
+    <input type="text" class="form-control" formControlName="name" />
+    <span
+      *ngIf="!isValid('name') && isTouched('name')"
+      class="text-danger fst-italic"
+      >Field required</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="surname" class="form-label">Last name</label>
+    <input type="text" class="form-control" formControlName="surname" />
+    <span
+      *ngIf="!isValid('surname') && isTouched('surname')"
+      class="text-danger fst-italic"
+      >Field required</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" formControlName="username" />
+    <span
+      *ngIf="!isValid('username') && isTouched('username')"
+      class="text-danger fst-italic"
+      >Field required</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" formControlName="password" />
+    <span
+      *ngIf="!isValid('password') && isTouched('password')"
+      class="text-danger fst-italic"
+      >Field required</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="confirmPassword" class="form-label">Confirm password</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="confirmPassword"
+    />
+    <span
+      *ngIf="!isValid('confirmPassword') && isTouched('confirmPassword')"
+      class="text-danger fst-italic d-block"
+      >Field required</span
+    >
+    <span
+      *ngIf="form.hasError('matchPswControl')"
+      class="text-danger fst-italic"
+      >Password does not match</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="genre" class="form-label">Genre</label>
+    <select class="form-select" formControlName="genre">
+      <option value="man">Man</option>
+      <option value="woman">Woman</option>
+      <option value="other">Other</option>
+    </select>
+    <span
+      *ngIf="!isValid('genre') && isTouched('genre')"
+      class="text-danger fst-italic"
+      >Field required</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Profile image</label>
+    <input type="file" class="form-control" formControlName="image" />
+    <span
+      *ngIf="!isValid('image') && isTouched('image')"
+      class="text-danger fst-italic"
+      >Field required</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="bio" class="form-label">Bio</label>
+    <textarea class="form-control" formControlName="bio"></textarea>
+    <span
+      *ngIf="!isValid('bio') && isTouched('bio')"
+      class="text-danger fst-italic"
+      >Field required</span
+    >
+  </div>
+  <button [disabled]="form.invalid" class="btn btn-primary">Register</button>
+</form>
